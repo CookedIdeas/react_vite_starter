@@ -1,36 +1,41 @@
-import { useDispatch } from 'react-redux';
-import { clearUser, setUser, useUser } from './features/user/userSlice';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import HomeLayout from './pages/HomeLayout';
+import Error from './pages/Error';
+import Landing from './pages/Landing';
+import ErrorElement from './components/1_global/ErrorElement';
+// === LOADERS === //
 
-function App() {
-  const dispatch = useDispatch();
-  const { user } = useUser();
-  console.log(user);
-  return (
-    <div>
-      <h1 className="text-2xl">App</h1>
-      <div className="mt-8 flex flex-col gap-4">
-        {user.name ? (
-          <span>Hello {user.name}</span>
-        ) : (
-          <span>Click on add user to... add user</span>
-        )}
-        <div className="flex gap-8 w-1/2">
-          <button
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-            onClick={() => dispatch(setUser({ user: { name: 'Bob' } }))}
-          >
-            Add user
-          </button>
-          <button
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-            onClick={() => dispatch(clearUser())}
-          >
-            Remove user
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
+// === ACTIONS === //
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomeLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        index: true,
+        element: <Landing />,
+        errorElement: <ErrorElement />,
+        // loader: LandingLoader,
+      },
+      // {
+      //   path: 'products',
+      //   element: <Products />,
+      //   errorElement: <ErrorElement />,
+      //   loader: ProductsLoader,
+      // },
+      // {
+      //   path: 'products/:id',
+      //   element: <SingleProduct />,
+      //   errorElement: <ErrorElement />,
+      //   loader: SingleProductLoader,
+      // },
+    ],
+  },
+]);
+
+const App = () => {
+  return <RouterProvider router={router} />;
+};
 export default App;
