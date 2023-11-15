@@ -2,6 +2,7 @@ import { Outlet, useNavigation } from 'react-router-dom';
 import Loading from '../components/1_global/Loading';
 import Header from '../components/2_navigation/Header';
 import Navbar from '../components/2_navigation/Navbar';
+import Footer from '../components/2_navigation/Footer';
 
 const HomeLayout = () => {
   const navigation = useNavigation();
@@ -16,10 +17,11 @@ const HomeLayout = () => {
       {isNavigationLoading ? (
         <Loading />
       ) : (
-        <section className="align-element py-20">
+        <section className="p-20 min-h-screen bg-background">
           <Outlet />
         </section>
       )}
+      <Footer />
     </>
   );
 };

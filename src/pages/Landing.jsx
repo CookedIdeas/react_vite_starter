@@ -7,7 +7,7 @@ const Landing = () => {
   const { user } = useUser();
   return (
     <div>
-      <h1 className="text-2xl">App</h1>
+      <h1 className="text-2xl font-bold text-primary">App</h1>
       <div className="mt-8 flex flex-col gap-4">
         {user.name ? (
           <span>Hello {user.name}</span>
@@ -16,13 +16,13 @@ const Landing = () => {
         )}
         <div className="flex gap-8 w-1/2">
           <button
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+            className="bg-primary hover:bg-primaryLight border-0 text-black font-semibold hover:text-white py-2 px-4 rounded"
             onClick={() => dispatch(setUser({ user: { name: 'Bob' } }))}
           >
             Add user
           </button>
           <button
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+            className="bg-primary hover:bg-primaryLight border-0 text-black font-semibold hover:text-white py-2 px-4 rounded"
             onClick={() => dispatch(clearUser())}
           >
             Remove user
