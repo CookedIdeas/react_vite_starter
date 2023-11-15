@@ -4,24 +4,32 @@ import Header from '../components/2_navigation/Header';
 import Navbar from '../components/2_navigation/Navbar';
 import Footer from '../components/2_navigation/Footer';
 
-const HomeLayout = () => {
+const HomeLayout = ({ outlet }) => {
   const navigation = useNavigation();
   const isNavigationLoading = navigation.state === 'loading';
-  console.log(navigation.state);
+
+  // width of navbar set in layout
+  // used in inline-styles for navbar width and margin-left for header, footer and main content
+  const navBarWidth = '8rem';
+
   return (
     <>
+      <Navbar navBarWidth={navBarWidth} />
       <nav>
-        <Header />
-        <Navbar />
+        <Header navBarWidth={navBarWidth} />
       </nav>
+
       {isNavigationLoading ? (
         <Loading />
       ) : (
-        <section className="p-20 min-h-screen bg-background">
-          <Outlet />
-        </section>
+        <main
+          style={{ marginLeft: navBarWidth }}
+          className={`p-20 min-h-screen bg-background`}
+        >
+          {outlet ? outlet : <Outlet />}
+        </main>
       )}
-      <Footer />
+      <Footer navBarWidth={navBarWidth} />
     </>
   );
 };
