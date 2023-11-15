@@ -1,8 +1,11 @@
-# React + Vite
+### React vite starter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+You won't find good design here, but you'll find a nice react project starter with following features :
 
-Currently, two official plugins are available:
+## Components
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Router in App.jsx → ready to have new routes and loaders, error element nested in layout
+- Layout, Header, Footer, Navbar → everything placing nicely depending on navbar width (navbar width is set in HomeLayout.jsx)
+- An instance of redux store is set (with userSlice)
+- Styling with TailwindCSS
+- Ready to use packages : react-icons, sonner, @tanstack/react-query (see code in utils/reactQuery.jsx)
